@@ -1,16 +1,22 @@
-# React + Vite
+# CampusEats Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React and Vite frontend for the CampusEats menu. The production site reads menu data from the API hosted on Render.
 
-Currently, two official plugins are available:
+## Local checks
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```powershell
+npm ci
+npm audit --audit-level=high
+npm run lint
+npm run build
+```
 
-## React Compiler
+The production build is written to `dist`. GitHub Actions runs the audit, lint and build checks on each push to `main` and on pull requests.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Hosting
 
-## Expanding the Oxlint configuration
+Vercel uses this folder as the project root, `npm run build` as the build command and `dist` as the output directory. Set `VITE_API_URL` to the backend HTTPS origin before building. This is public browser configuration; passwords and JWT signing secrets belong in the backend host environment.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+When `VITE_API_URL` is empty, the bundled menu is labelled as demo data. When it is configured, API errors are shown instead of falling back to the demo menu. The route rewrite in `vercel.json` supports direct links to dish pages.
+
+Live site: https://campuseats-it24101927.vercel.app

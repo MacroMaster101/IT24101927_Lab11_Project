@@ -15,7 +15,7 @@ Browser -> Vercel frontend -> Render API -> Neon PostgreSQL
 | --- | --- |
 | `campuseats-dashboard/` | React/Vite frontend and Vercel SPA configuration |
 | `CampusEats.Api/` | .NET 8 API, EF migrations and Dockerfile |
-| `.github/workflows/ci.yml` | Frontend lint/build and backend publish on pushes/PRs |
+| `.github/workflows/ci.yml` | Frontend audit/lint/build and backend publish on pushes/PRs |
 | `render.yaml` | Render blueprint for the API |
 
 ## Local checks
@@ -23,6 +23,7 @@ Browser -> Vercel frontend -> Render API -> Neon PostgreSQL
 ```powershell
 cd campuseats-dashboard
 npm ci
+npm audit --audit-level=high
 npm run lint
 npm run build
 npm run preview
