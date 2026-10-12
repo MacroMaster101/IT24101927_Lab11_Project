@@ -42,4 +42,10 @@ Vercel: root `campuseats-dashboard`, framework Vite, build `npm run build`, outp
 
 Render: root `CampusEats.Api`, runtime Docker, Dockerfile `./Dockerfile`, context `.`, health check `/health/ready`. Import `render.yaml` or configure the service manually. PostgreSQL is hosted on Neon with TLS certificate verification.
 
+Set `Swagger__Enabled=true` for the lab's interactive API checks at `/swagger`. API write endpoints remain protected by JWT roles.
+
+Frontend: https://campuseats-it24101927.vercel.app
+
+API: https://campuseats-api-it24101927.onrender.com/api/menu
+
 The Word report and screenshots are kept locally for submission and excluded from this repository.

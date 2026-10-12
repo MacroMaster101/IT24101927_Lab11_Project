@@ -24,3 +24,5 @@ services:
         value: "true"
       - key: Database__SeedMenu
         value: "true"
+      - key: Swagger__Enabled
+        value: "true"
