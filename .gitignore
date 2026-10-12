@@ -1,0 +1,17 @@
+**/node_modules/
+**/dist/
+**/bin/
+**/obj/
+**/.env
+**/.env.*
+!**/.env.example
+.vs/
+.vscode/
+.vercel/
+**/.vercel/
+tmp/
+output/
+*.zip
+*.user
+*.log
+**/appsettings.Local.json
