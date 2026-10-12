@@ -17,9 +17,6 @@ Browser -> Vercel frontend -> Render API -> Neon PostgreSQL
 | `CampusEats.Api/` | .NET 8 API, EF migrations and Dockerfile |
 | `.github/workflows/ci.yml` | Frontend lint/build and backend publish on pushes/PRs |
 | `render.yaml` | Render blueprint for the API |
-| `docs/DEPLOYMENT.md` | Exact deployment settings and verification steps |
-| `docs/screenshots/` | Genuine screenshots captured during the lab |
-| `scripts/Test-Deployment.ps1` | Live API, database readiness and CORS checks |
 
 ## Local checks
 
@@ -37,8 +34,12 @@ The frontend clearly labels the bundled menu as demo data when `VITE_API_URL` is
 dotnet publish CampusEats.Api/CampusEats.Api.csproj -c Release
 ```
 
-The API requires `ConnectionStrings__Default` and `Jwt__Key` at runtime. See the deployment guide for CORS and migrations. Keep secret values in host environment settings or local session variables. Never commit `.env`, a real database connection string, or a JWT key.
+The API requires `ConnectionStrings__Default` and `Jwt__Key` at runtime. Set `Cors__AllowedOrigins__0` to the frontend HTTPS origin. For this lab, `Database__ApplyMigrations=true` and `Database__SeedMenu=true` apply EF Core migrations and seed the initial menu at startup. Keep secret values in host environment settings or local session variables. Never commit `.env`, a real database connection string, or a JWT key.
 
 ## Deployment and evidence
 
-Follow [the deployment guide](docs/DEPLOYMENT.md). Actual URLs and completion status are recorded in `docs/lab-status.json`. The report must only claim deployments that have been verified. Environment screenshots must show names with values masked.
+Vercel: root `campuseats-dashboard`, framework Vite, build `npm run build`, output `dist`. Set `VITE_API_URL` to the Render API origin and redeploy.
+
+Render: root `CampusEats.Api`, runtime Docker, Dockerfile `./Dockerfile`, context `.`, health check `/health/ready`. Import `render.yaml` or configure the service manually. PostgreSQL is hosted on Neon with TLS certificate verification.
+
+The Word report and screenshots are kept locally for submission and excluded from this repository.

@@ -15,3 +15,7 @@ output/
 *.user
 *.log
 **/appsettings.Local.json
+docs/
+scripts/
+*.docx
+*.pdf

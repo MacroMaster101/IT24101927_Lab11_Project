@@ -29,7 +29,7 @@ public class MenuController : ControllerBase
 
         return item is null ? NotFound() : Ok(item);
     }
- 
+
     [HttpPost]               // POST /api/menu
     [Authorize(Roles = "Admin")]
     public ActionResult<MenuItemDto> Create(
